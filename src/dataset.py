@@ -32,4 +32,7 @@ x_test = x_test.astype('float32') / 255.0
 y_train = to_categorical(y_train, 10)
 y_test = to_categorical(y_test, 10)
 
-print("✅ El script llegó hasta el final correctamente.")
+print("\nDespués de normalizar y codificar:")
+print("x_train shape:", x_train.shape, flush=True)
+print("y_train shape:", y_train.shape, flush=True)
+print("Ejemplo de etiqueta codificada:", y_train[0], flush=True)
