@@ -1,0 +1,15 @@
+# Ignorar entorno virtual
+venv/
+.env/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+
+# Archivos del sistema
+.DS_Store
+
+# Archivos grandes o locales
+*.log
+*.h5
+*.ckpt
