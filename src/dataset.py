@@ -1,19 +1,29 @@
-# FASE 1 
+# FASE 1
 
+import ssl
+import tensorflow as tf
 from tensorflow.keras.datasets import cifar10
 import matplotlib.pyplot as plt
 import numpy as np
 from tensorflow.keras.utils import to_categorical
 
-# Cargar los datos (imágenes y etiquetas)
-(x_train, y_train), (x_test, y_test) = cifar10.load_data(path="C:/Users/alexa/Desktop/Protectos dani/cnn-cifar10/data/cifar-10-batches-py")
+# 🔧 Solución SSL para evitar errores de certificado (Python 3.13 en Windows)
+ssl._create_default_https_context = ssl._create_unverified_context
 
+# Cargar el dataset CIFAR-10
+print("📦 Cargando el dataset CIFAR-10 (automáticamente desde Keras)...")
+(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+print("✅ Dataset CIFAR-10 cargado correctamente.")
 
+# Mostrar tamaños
 print("Tamaño del conjunto de entrenamiento:", x_train.shape)
 print("Tamaño del conjunto de prueba:", x_test.shape)
 
 # Definir las etiquetas de las 10 clases
-class_names = ['avión', 'automóvil', 'pájaro', 'gato', 'ciervo', 'perro', 'rana', 'caballo', 'barco', 'camión']
+class_names = [
+    'avión', 'automóvil', 'pájaro', 'gato', 'ciervo',
+    'perro', 'rana', 'caballo', 'barco', 'camión'
+]
 
 # Mostrar una cuadrícula con 9 imágenes de ejemplo
 plt.figure(figsize=(6,6))
