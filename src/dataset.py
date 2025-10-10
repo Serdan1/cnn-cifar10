@@ -6,7 +6,8 @@ import numpy as np
 from tensorflow.keras.utils import to_categorical
 
 # Cargar los datos (imágenes y etiquetas)
-(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+(x_train, y_train), (x_test, y_test) = cifar10.load_data(path="C:/Users/alexa/Desktop/Protectos dani/cnn-cifar10/data/cifar-10-batches-py")
+
 
 print("Tamaño del conjunto de entrenamiento:", x_train.shape)
 print("Tamaño del conjunto de prueba:", x_test.shape)
