@@ -28,3 +28,18 @@ model.compile(
 
 print("✅ Modelo compilado correctamente.")
 model.summary()
+
+# 🧩 ENTRENAMIENTO DEL MODELO
+
+# Entrenar el modelo durante 10 épocas, usando 10% de los datos para validación
+history = model.fit(
+    x_train, y_train,
+    epochs=10,
+    batch_size=64,
+    validation_split=0.1,
+    verbose=1
+)
+
+# Guardar el historial para análisis posterior
+print("✅ Entrenamiento completado.")
+
