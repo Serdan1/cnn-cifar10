@@ -1,0 +1,30 @@
+# src/train_and_evaluate.py
+
+from tensorflow.keras.datasets import cifar10
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.optimizers import Adam
+from cnn_model import model
+
+# 🧠 Cargar el dataset CIFAR-10
+(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+
+# 🔄 Normalizar los valores de píxeles (0-255 → 0-1)
+x_train = x_train.astype('float32') / 255.0
+x_test = x_test.astype('float32') / 255.0
+
+# 🏷️ Convertir etiquetas a formato one-hot
+y_train = to_categorical(y_train, 10)
+y_test = to_categorical(y_test, 10)
+
+# ⚙️ COMPILACIÓN DEL MODELO
+# 'adam': optimizador eficiente y adaptativo
+# 'categorical_crossentropy': pérdida para clasificación multiclase
+# 'accuracy': métrica principal de rendimiento
+model.compile(
+    optimizer=Adam(),
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+print("✅ Modelo compilado correctamente.")
+model.summary()
