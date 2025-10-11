@@ -43,3 +43,13 @@ history = model.fit(
 # Guardar el historial para análisis posterior
 print("✅ Entrenamiento completado.")
 
+# 🧮 EVALUACIÓN DEL MODELO
+
+# Evaluar el modelo sobre el conjunto de prueba
+test_loss, test_accuracy = model.evaluate(x_test, y_test, verbose=1)
+
+print(f"\n📊 Resultados en el conjunto de prueba:")
+print(f"   Pérdida (loss): {test_loss:.4f}")
+print(f"   Precisión (accuracy): {test_accuracy:.4f}")
+
+
