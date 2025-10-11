@@ -28,3 +28,61 @@ model.compile(
 
 print("✅ Modelo compilado correctamente.")
 model.summary()
+
+# 🧩 ENTRENAMIENTO DEL MODELO
+
+# Entrenar el modelo durante 10 épocas, usando 10% de los datos para validación
+history = model.fit(
+    x_train, y_train,
+    epochs=10,
+    batch_size=64,
+    validation_split=0.1,
+    verbose=1
+)
+
+# Guardar el historial para análisis posterior
+print("✅ Entrenamiento completado.")
+
+# 🧮 EVALUACIÓN DEL MODELO
+
+# Evaluar el modelo sobre el conjunto de prueba
+test_loss, test_accuracy = model.evaluate(x_test, y_test, verbose=1)
+
+print(f"\n📊 Resultados en el conjunto de prueba:")
+print(f"   Pérdida (loss): {test_loss:.4f}")
+print(f"   Precisión (accuracy): {test_accuracy:.4f}")
+
+# 📈 VISUALIZACIÓN DE RESULTADOS
+
+import matplotlib.pyplot as plt
+
+# Extraer los datos de entrenamiento y validación
+acc = history.history['accuracy']
+val_acc = history.history['val_accuracy']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+epochs = range(1, len(acc) + 1)
+
+# Gráfico de precisión
+plt.figure(figsize=(12, 5))
+
+plt.subplot(1, 2, 1)
+plt.plot(epochs, acc, 'bo-', label='Entrenamiento')
+plt.plot(epochs, val_acc, 'ro-', label='Validación')
+plt.title('Precisión del modelo')
+plt.xlabel('Épocas')
+plt.ylabel('Precisión')
+plt.legend()
+
+# Gráfico de pérdida
+plt.subplot(1, 2, 2)
+plt.plot(epochs, loss, 'bo-', label='Entrenamiento')
+plt.plot(epochs, val_loss, 'ro-', label='Validación')
+plt.title('Pérdida del modelo')
+plt.xlabel('Épocas')
+plt.ylabel('Pérdida')
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+

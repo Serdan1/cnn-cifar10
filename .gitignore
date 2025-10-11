@@ -13,3 +13,19 @@ __pycache__/
 *.log
 *.h5
 *.ckpt
+
+# 🧹 Ignorar archivos del dataset local
+src/cifar-10-batches-py/
+
+# 🧹 Ignorar entornos virtuales locales
+venv/
+cnn-cifar10-venv/
+
+# 🧹 Ignorar archivos temporales o de cache
+__pycache__/
+*.pyc
+*.pyo
+
+# 🧹 Ignorar configuraciones de VS Code
+.vscode/
+
