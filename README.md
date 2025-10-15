@@ -64,7 +64,9 @@ cd cnn-cifar10
 
 # Crear entorno virtual
 python -m venv venv
-.\venv\Scripts\activate    # En Windows
+
+.\venv\Scripts\activate  # En Windows
+
 venv/bin/activate # En Linux/Mac
 
 # Instalar dependencias
