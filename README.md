@@ -1,5 +1,11 @@
 # cnn-cifar10
 Implementación de una Red Neuronal Convolucional para clasificación de imágenes CIFAR-100 con TensorFlow/Keras
+
+# ejecuta el sistema:
+
+streamlit run app.py
+
+
 # 🧠 Clasificación de Imágenes con CNN — CIFAR-10
 
 Proyecto académico desarrollado como parte de la asignatura **Lenguaje Natural y Compiladores** (Universidad UNIE).  
