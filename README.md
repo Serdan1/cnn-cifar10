@@ -3,7 +3,7 @@ Implementación de una Red Neuronal Convolucional para clasificación de imágen
 
 # Ejecuta el sistema:
 
-streamlit run app.py
+[streamlit run app.py](https://cnn-cifar10-gksz6dmdjwxwrydjlsx2rp.streamlit.app/)
 
 
 # 🧠 Clasificación de Imágenes con CNN — CIFAR-10
