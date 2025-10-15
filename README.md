@@ -16,24 +16,7 @@ El modelo se entrena con **CIFAR-10**, un dataset que contiene 60.000 imágenes 
 
 ---
 
-## 🧩 2. Arquitectura del Sistema
-
-El proyecto está estructurado modularmente en 3 componentes principales:
-
-cnn-cifar10/
-│
-├── src/
-│ ├── dataset.py # Carga y preprocesamiento del dataset CIFAR-10
-│ ├── cnn_model.py # Definición de la arquitectura CNN
-│ └── train_and_evaluate.py # Entrenamiento, evaluación y visualización
-│
-├── main.py # Punto de entrada principal del sistema
-├── requirements.txt # Dependencias del proyecto
-└── docs/
-└── Informe_Tecnico_CNN.pdf # Informe final del proyecto
-
-
-## 🧱 3. Arquitectura del Modelo CNN
+## 🧱 2. Arquitectura del Modelo CNN
 
 **Modelo implementado en `src/cnn_model.py`:**
 
@@ -51,7 +34,7 @@ cnn-cifar10/
 
 ---
 
-## 🧠 4. Instalación y Requisitos
+## 🧠 3. Instalación y Requisitos
 
 ### 🔧 Requisitos previos
 - Python 3.10 o superior  
@@ -73,7 +56,7 @@ venv/bin/activate # En Linux/Mac
 pip install -r requirements.txt
 
 
-## 🚀 5. Ejecución del Sistema
+## 🚀 4. Ejecución del Sistema
 Para ejecutar todo el flujo del proyecto (carga, entrenamiento, evaluación y gráficas):
 python main.py
 
@@ -85,7 +68,7 @@ La precisión final en el conjunto de prueba (~70%)
 
 Las gráficas de pérdida y precisión del modelo
 
-## 📊 6. Resultados Obtenidos
+## 📊 5. Resultados Obtenidos
 Métrica	Valor
 Precisión de entrenamiento	0.76
 Precisión de validación	0.71
@@ -95,7 +78,7 @@ Pérdida en test	0.85
 📈 Las curvas de entrenamiento muestran una convergencia estable sin sobreajuste.
 
 
-## 🧭 7. Conclusiones
+## 🧭 6. Conclusiones
 
 El modelo logra una precisión del 70% en el conjunto de prueba,
 demostrando la capacidad de las CNN para extraer automáticamente características visuales
