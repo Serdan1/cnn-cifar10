@@ -23,14 +23,15 @@ El proyecto está estructurado modularmente en 3 componentes principales:
 cnn-cifar10/
 │
 ├── src/
-│ ├── dataset.py # Carga y preprocesamiento del dataset CIFAR-10
-│ ├── cnn_model.py # Definición de la arquitectura CNN
-│ └── train_and_evaluate.py # Entrenamiento, evaluación y visualización
+│   ├── dataset.py             # Carga y preprocesamiento del dataset CIFAR-10
+│   ├── cnn_model.py           # Definición de la arquitectura CNN
+│   └── train_and_evaluate.py  # Entrenamiento, evaluación y visualización
 │
-├── main.py # Punto de entrada principal del sistema
-├── requirements.txt # Dependencias del proyecto
+├── main.py                    # Punto de entrada principal del sistema
+├── requirements.txt           # Dependencias del proyecto
 └── docs/
-└── Informe_Tecnico_CNN.pdf # Informe final del proyecto
+    └── Informe_Tecnico_CNN.pdf  # Informe final del proyecto
+
 ---
 
 ## 🧱 3. Arquitectura del Modelo CNN
