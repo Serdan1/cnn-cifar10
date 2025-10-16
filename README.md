@@ -90,10 +90,13 @@ El modelo logra una precisión del 70% en el conjunto de prueba,
 demostrando la capacidad de las CNN para extraer automáticamente características visuales
 y superar los métodos tradicionales en tareas de visión artificial.
 
-Mejoras futuras:
 
-Añadir Dropout o Data Augmentation
+Este proyecto ha permitido entender en profundidad:
 
-Aumentar las épocas de entrenamiento
+El proceso de aprendizaje jerárquico de las CNNs.
 
-Usar Batch Normalization
+La importancia del gradiente y la retropropagación en la optimización.
+
+Cómo la reducción de dimensionalidad mediante pooling mejora la generalización.
+
+El modelo alcanza una precisión del 70 % en test, lo que confirma la validez del diseño y entrenamiento implementado.
