@@ -1,64 +1,72 @@
-"""
-📦 Proyecto: Clasificación de Imágenes con CNN (CIFAR-10)
-Autor: Daniel serrano y Alexander Arrosquipa
-Universidad: UNIE
-Descripción: Script principal que ejecuta todo el flujo del sistema:
-             carga de datos, creación del modelo, entrenamiento y evaluación.
-"""
-
+import os
+import json
+from tensorflow.keras.models import load_model
+from tensorflow.keras.optimizers import Adam
 from src.dataset import x_train, y_train, x_test, y_test
 from src.cnn_model import model
 
-# 🔧 Compilar el modelo
-print("\n🔧 Compilando el modelo...")
-model.compile(optimizer='adam',
-              loss='categorical_crossentropy',
-              metrics=['accuracy'])
-print("✅ Modelo compilado correctamente.")
+MODEL_DIR = "models"
+MODEL_PATH = os.path.join(MODEL_DIR, "cnn_cifar10_trained.h5")
+HISTORY_PATH = os.path.join(MODEL_DIR, "training_history.json")
 
-# 🚀 Entrenar el modelo
-print("\n🚀 Iniciando entrenamiento...")
-history = model.fit(
-    x_train, y_train,
-    epochs=10,
-    batch_size=64,
-    validation_split=0.1,
-    verbose=1
-)
+# Crear carpeta de modelos si no existe
+os.makedirs(MODEL_DIR, exist_ok=True)
 
-# 🧪 Evaluar el modelo
-print("\n🧪 Evaluando el modelo en el conjunto de prueba...")
-test_loss, test_accuracy = model.evaluate(x_test, y_test, verbose=1)
-print(f"\n📊 Resultados finales:")
-print(f"   Pérdida (loss): {test_loss:.4f}")
-print(f"   Precisión (accuracy): {test_accuracy:.4f}")
+# 🔍 Verificar si el modelo ya está entrenado
+if os.path.exists(MODEL_PATH):
+    print("✅ Modelo entrenado encontrado. Cargando desde disco...")
+    model = load_model(MODEL_PATH)
 
-# 📈 Mostrar las curvas de entrenamiento
-import matplotlib.pyplot as plt
+    # Cargar historial si existe
+    if os.path.exists(HISTORY_PATH):
+        with open(HISTORY_PATH, "r") as f:
+            history_data = json.load(f)
+        print("📊 Historial de entrenamiento cargado.")
+    else:
+        history_data = None
 
-acc = history.history['accuracy']
-val_acc = history.history['val_accuracy']
-loss = history.history['loss']
-val_loss = history.history['val_loss']
-epochs = range(1, len(acc) + 1)
+else:
+    print("🏋️ Entrenando modelo (primer uso)...")
 
-plt.figure(figsize=(12, 5))
+    model.compile(optimizer=Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
+    history = model.fit(
+        x_train, y_train,
+        epochs=8,
+        batch_size=64,
+        validation_split=0.1,
+        verbose=1
+    )
 
-plt.subplot(1, 2, 1)
-plt.plot(epochs, acc, 'bo-', label='Entrenamiento')
-plt.plot(epochs, val_acc, 'ro-', label='Validación')
-plt.title('Precisión del modelo')
-plt.xlabel('Épocas')
-plt.ylabel('Precisión')
-plt.legend()
+    print("💾 Guardando modelo y resultados...")
+    model.save(MODEL_PATH)
 
-plt.subplot(1, 2, 2)
-plt.plot(epochs, loss, 'bo-', label='Entrenamiento')
-plt.plot(epochs, val_loss, 'ro-', label='Validación')
-plt.title('Pérdida del modelo')
-plt.xlabel('Épocas')
-plt.ylabel('Pérdida')
-plt.legend()
+    # Guardar historial de entrenamiento
+    with open(HISTORY_PATH, "w") as f:
+        json.dump(history.history, f)
+    history_data = history.history
 
-plt.tight_layout()
-plt.show()
+# 📈 Evaluación del modelo
+test_loss, test_acc = model.evaluate(x_test, y_test, verbose=0)
+print(f"📊 Precisión final en test: {test_acc:.2f}")
+
+# (Opcional) Mostrar resumen visual básico si hay historial
+if history_data:
+    import matplotlib.pyplot as plt
+
+    acc = history_data.get('accuracy', [])
+    val_acc = history_data.get('val_accuracy', [])
+    loss = history_data.get('loss', [])
+    val_loss = history_data.get('val_loss', [])
+
+    plt.figure(figsize=(12,5))
+    plt.subplot(1,2,1)
+    plt.plot(acc, label='Entrenamiento')
+    plt.plot(val_acc, label='Validación')
+    plt.title('Precisión'); plt.legend()
+
+    plt.subplot(1,2,2)
+    plt.plot(loss, label='Entrenamiento')
+    plt.plot(val_loss, label='Validación')
+    plt.title('Pérdida'); plt.legend()
+    plt.tight_layout()
+    plt.show()
