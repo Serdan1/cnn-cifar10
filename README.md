@@ -111,34 +111,36 @@ El modelo alcanza una precisión del 70 % en test, lo que confirma la validez de
 ```mermaid
 flowchart TD
     %% --- Dataset ---
-    A[📦 Dataset CIFAR-10] -->|Carga y Preprocesamiento| B[⚙️ dataset.py]
-    B -->|Normalización (0-1) y One-Hot Encoding| C[🧠 cnn_model.py]
+    A[Dataset CIFAR-10] -->|Carga y preprocesamiento| B[dataset.py]
+    B -->|Normalizacion y One-Hot Encoding| C[cnn_model.py]
     
     %% --- Modelo CNN ---
     subgraph Modelo_CNN [Arquitectura de la CNN]
-        C1[Conv2D (32 filtros, 3x3, ReLU)]
-        C2[MaxPooling2D (2x2)]
-        C3[Conv2D (64 filtros, 3x3, ReLU)]
-        C4[MaxPooling2D (2x2)]
+        C1[Conv2D (32 filtros)]
+        C2[MaxPooling2D]
+        C3[Conv2D (64 filtros)]
+        C4[MaxPooling2D]
         C5[Flatten]
-        C6[Dense (64, ReLU)]
+        C6[Dense (64)]
         C7[Dense (10, Softmax)]
         C1 --> C2 --> C3 --> C4 --> C5 --> C6 --> C7
     end
     
-    C -->|Definición del modelo| Modelo_CNN --> D[🏋️ train_and_evaluate.py]
+    C -->|Definicion del modelo| Modelo_CNN --> D[train_and_evaluate.py]
     
-    %% --- Entrenamiento y Evaluación ---
-    D -->|Compilación y Entrenamiento (8 épocas)| E[💾 models/cnn_cifar10_trained.h5]
-    D -->|Historial de entrenamiento| F[(📊 training_history.json)]
+    %% --- Entrenamiento y Evaluacion ---
+    D -->|Entrenamiento (8 epocas)| E[cnn_cifar10_trained.h5]
+    D -->|Historial de entrenamiento| F[training_history.json]
     
-    %% --- Evaluación ---
-    E -->|Evaluación con test set| G[📈 Precisión y Pérdida]
+    %% --- Evaluacion ---
+    E -->|Evaluacion con test set| G[Precision y Perdida]
     
     %% --- Interfaz ---
-    G -->|Visualización y Predicciones| H[💻 Streamlit app.py]
+    G -->|Visualizacion y Predicciones| H[Streamlit app.py]
     F --> H
     E --> H
     
     %% --- Resultados finales ---
-    H -->|Resultados visuales y predicciones| I[✅ Usuario]
+    H -->|Resultados visuales y predicciones| I[Usuario]
+
+---
