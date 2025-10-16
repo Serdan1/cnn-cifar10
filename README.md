@@ -5,7 +5,7 @@ El objetivo es implementar y entrenar una **Red Neuronal Convolucional (CNN)** c
 
 ### Ejecuta el sistema:
 
-# 💻 Interfaz con Streamlit
+#### 💻 Interfaz con Streamlit
 
 Este proyecto incluye una interfaz interactiva desarrollada con Streamlit que permite visualizar el modelo CNN entrenado, las métricas de rendimiento y realizar predicciones en tiempo real sobre imágenes del dataset CIFAR-10.
 
