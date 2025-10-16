@@ -112,31 +112,31 @@ El modelo alcanza una precisión del 70 % en test, lo que confirma la validez de
 flowchart TD
     %% --- Dataset ---
     A[Dataset CIFAR-10] -->|Carga y preprocesamiento| B[dataset.py]
-    B -->|Normalizacion y One-Hot Encoding| C[cnn_model.py]
+    B -->|Normalizacion y One Hot Encoding| C[cnn_model.py]
     
     %% --- Modelo CNN ---
     subgraph Modelo_CNN [Arquitectura de la CNN]
-        C1[Conv2D (32 filtros)]
+        C1[Conv2D 32 filtros]
         C2[MaxPooling2D]
-        C3[Conv2D (64 filtros)]
+        C3[Conv2D 64 filtros]
         C4[MaxPooling2D]
         C5[Flatten]
-        C6[Dense (64)]
-        C7[Dense (10, Softmax)]
+        C6[Dense 64]
+        C7[Dense 10 Softmax]
         C1 --> C2 --> C3 --> C4 --> C5 --> C6 --> C7
     end
     
     C -->|Definicion del modelo| Modelo_CNN --> D[train_and_evaluate.py]
     
     %% --- Entrenamiento y Evaluacion ---
-    D -->|Entrenamiento (8 epocas)| E[cnn_cifar10_trained.h5]
+    D -->|Entrenamiento 8 epocas| E[cnn_cifar10_trained.h5]
     D -->|Historial de entrenamiento| F[training_history.json]
     
     %% --- Evaluacion ---
     E -->|Evaluacion con test set| G[Precision y Perdida]
     
     %% --- Interfaz ---
-    G -->|Visualizacion y Predicciones| H[Streamlit app.py]
+    G -->|Visualizacion y predicciones| H[Streamlit app.py]
     F --> H
     E --> H
     
