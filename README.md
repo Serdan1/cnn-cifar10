@@ -11,6 +11,10 @@ Implementación de una Red Neuronal Convolucional para clasificación de imágen
 Proyecto académico desarrollado como parte de la asignatura **Lenguaje Natural y Compiladores** (Universidad UNIE).  
 El objetivo es implementar y entrenar una **Red Neuronal Convolucional (CNN)** capaz de reconocer objetos en imágenes del conjunto de datos **CIFAR-10**, utilizando **TensorFlow y Keras**.
 
+### 📓 Notebook
+- [Abrir en Colab](https://colab.research.google.com/github/Serdan1/cnn-cifar10/blob/main/notebooks/cnn_cifar10.ipynb)
+- O descarga el `.ipynb` desde `notebooks/` del repositorio.
+
 ---
 
 ## 🚀 1. Descripción del Proyecto
