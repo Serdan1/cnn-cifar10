@@ -108,7 +108,8 @@ El modelo alcanza una precisión del 70 % en test, lo que confirma la validez de
 
 ### 🧩 Arquitectura del Sistema (Mermaid)
 
-flowchart TD
+```mermaid
+graph TD
     %% --- Dataset ---
     A[Dataset CIFAR-10] -->|Carga y preprocesamiento| B[dataset.py]
     B -->|Normalizacion y One Hot Encoding| C[cnn_model.py]
