@@ -108,7 +108,6 @@ El modelo alcanza una precisión del 70 % en test, lo que confirma la validez de
 
 ### 🧩 Arquitectura del Sistema (Mermaid)
 
-```mermaid
 flowchart TD
     %% --- Dataset ---
     A[Dataset CIFAR-10] -->|Carga y preprocesamiento| B[dataset.py]
@@ -142,11 +141,3 @@ flowchart TD
     
     %% --- Resultados finales ---
     H -->|Resultados visuales y predicciones| I[Usuario]
-
-✅ **Importante:** asegúrate de que no haya **espacios después de las tres comillas finales** y que el bloque esté cerrado correctamente en tu README.  
-GitHub renderiza este diagrama sin errores.
-
----
-
-¿Quieres que te prepare ahora el **segundo diagrama técnico** (solo la arquitectura interna de la CNN, mostrando cómo fluye la información entre capas)?  
-Ese se vería impresionante junto a este.
